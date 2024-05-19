@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     try {
         //call the openai API to generate a creative writing prompt
         const response = await openai.chat.completions.create({
-            model: 'gpt-3.5-turbo-0125',
+            model: 'gpt-3.5-turbo',
             messages: [
                 { role: 'system', content: 'You are a helpful assistant designed to output JSON.' },
                 { role: 'user', content: `Create a creative writing about ${topic}` },

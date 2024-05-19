@@ -1,24 +1,33 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const GenerateImage = () => {
-  const [keyword, setKeyword] = useState('');
+// Create a functional component called GenerateImage
+const GenerateImage: React.FC = () => {
+  // Define state variables using the useState hook
+  const [keyword, setKeyword] = useState<string>('');
   const [imageUrl, setImageUrl] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
+  // Handle form submission to generate an image
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent default form submission behavior
+    setLoading(true); // Set loading state to true
 
     try {
-      const response = await axios.post('/api/generateImage', { description: keyword });
-      setImageUrl(response.data.imageUrl || '');
+      // Send a POST request to the '/api/generateImage' endpoint with the keyword
+      const response = await axios.post<{ imageUrl: string }>('/api/generateImage', { description: keyword });
+      setImageUrl(response.data.imageUrl || ''); // Set the generated image URL
       setError(''); // Clear any previous error
     } catch (error) {
       console.error('Failed to generate image:', error);
       setError('Failed to generate image. Please try again.'); // Set the error message
+    } finally {
+      setLoading(false); // Set loading state back to false
     }
   };
 
+  // Render the component UI
   return (
     <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden">
       <form onSubmit={handleSubmit} className="p-6">
@@ -28,10 +37,11 @@ const GenerateImage = () => {
           id="keyword"
           value={keyword}
           onChange={(event) => setKeyword(event.target.value)}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          placeholder="An inspirational flower on a windowsill"
+          className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${keyword ? '' : 'italic'}`}
         />
         <button type="submit" className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-          Generate Image
+          {loading ? 'Generating...' : 'Generate Image'}
         </button>
       </form>
       {error && (
@@ -49,4 +59,5 @@ const GenerateImage = () => {
   );
 };
 
+// Export the GenerateImage component as the default export
 export default GenerateImage;

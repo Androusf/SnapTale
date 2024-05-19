@@ -1,72 +1,40 @@
 'use client';
-import React, { useState } from 'react';
-import GeneratePrompt from './components/GeneratePromptC';
-import GenerateImage from './components/GenerateImageC';
-import GenerateSpeech from './components/TextToSpeechC';
-import { useSession, signIn, signOut } from 'next-auth/react';
-import Signin from './api/auth/[...nextauth]/SigninC';
 
-const Home = () => {
+import React from 'react';
+import { useSession, signIn } from 'next-auth/react';
+import Signin from './api/auth/[...nextauth]/SigninC';
+import Header from './components/Header';
+import MainContent from './components/MainContent';
+import Footer from './components/Footer';
+import SignOutButton from './components/SignOutButton';
+
+const Home: React.FC = () => {
   const { data: session } = useSession();
-  const [option, setOption] = useState('');
 
   return (
-    <Signin>
-      {!session ? (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-          <h1 className="text-3xl font-bold mb-4">Please Sign In</h1>
-          <button
-            onClick={() => signIn('github')}
-            className="px-4 py-2 bg-blue-500 text-white rounded"
-          >
-            Sign In with GitHub
-          </button>
-        </div>
-      ) : (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-          <div className="mb-4">
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <Signin>
+        {!session ? (
+          <div className="flex flex-col items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 text-white flex-grow px-4 py-8">
+            <h1 className="text-4xl font-bold mb-6">Welcome to SnapTale!</h1>
+            <p className="text-lg text-center mb-6">Create stories, images, and text-to-speech with AI.</p>
             <button
-              onClick={() => setOption('prompt')}
-              className="px-4 py-2 bg-green-500 text-white rounded mr-2"
+              onClick={() => signIn('github')}
+              className="px-6 py-3 bg-black text-white rounded-lg shadow-md hover:bg-gray-800 transition duration-300 ease-in-out"
             >
-              Generate Prompt
-            </button>
-            <button
-              onClick={() => setOption('image')}
-              className="px-4 py-2 bg-green-500 text-white rounded mr-2"
-            >
-              Generate Image
-            </button>
-            <button
-              onClick={() => setOption('speech')}
-              className="px-4 py-2 bg-green-500 text-white rounded mr-2"
-            >
-              Generate Speech
-            </button>
-            <button
-              onClick={() => alert('this function is not allowed')}
-              className="px-4 py-2 bg-red-500 text-white rounded mr-2"
-            >
-              Text Analysis
-            </button>
-            <button
-              onClick={() => signOut()}
-              className="px-4 py-2 bg-gray-500 text-white rounded"
-            >
-              Sign Out
+              Authenticate with GitHub to Continue
             </button>
           </div>
-          <div className="w-full max-w-2xl">
-            {option === 'prompt' && <GeneratePrompt />}
-            {option === 'image' && <GenerateImage />}
-            {option === 'speech' && <GenerateSpeech />}
+        ) : (
+          <div className="relative bg-gradient-to-r from-blue-500 to-purple-500 flex-grow pb-16 px-4 py-8">
+            <MainContent />
+            <SignOutButton />
           </div>
-          <div className="mt-4 text-sm text-gray-500">
-            Developed by <a href="https://www.linkedin.com/in/andresfeliperocha/" target="_blank" rel="noopener noreferrer" className="underline">Andres Rocha</a>
-          </div>
-        </div>
-      )}
-    </Signin>
+        )}
+      </Signin>
+      <Footer />
+    </div>
   );
 };
 

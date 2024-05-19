@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SnapTale
 
-## Getting Started
+SnapTale is a web application that allows users to generate stories, images, and speech using artificial intelligence. With this app, users can explore their creativity and generate content quickly and easily.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Generation of stories based on a topic or keyword
+- Generation of images from a description
+- Generation of speech from a text
+- GitHub authentication to access the features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- React.js
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Axios
+- NextAuth.js
+- OpenAI API
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## How to Run the App Locally
 
-## Learn More
+1. Clone the repository:
+   ```bash
+   git clone https://https://github.com/Androusf/SnapTale
 
-To learn more about Next.js, take a look at the following resources:
+2. Navigate to the project directory
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    cd SnapTale
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Install the dependencies:
+    
+    npm install
 
-## Deploy on Vercel
+4. Set up the enviroment variables:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    -Create a .env.local file in the root of the project
+    -Add the following variables:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    NEXTAUTH_URL=http://localhost:3000
+    GITHUB_ID=your-github-client-id
+    GITHUB_SECRET=your-github-client-secret
+    OPENAI_API_KEY=your-openai-api-key
+
+    Replace your-github-client-id, your-github-client-secret, and your-openai-api-key with your actual values.
+
+5. Start the developer server:
+
+    npm run dev
+
+6. Open your browser and visit "http://localhost:3000" to access the app.
+
+## How to Use the App
+
+- Click the "Authenticate with GitHub to Continue" button to sign in with your GitHub account.
+- Once signed in, select the AI tool you want to use: Generate Story, Generate Image, or Generate Speech
+- Enter the topic, description, or text according to the selected tool
+- Click the "Generate" button to get the AI-generated result
+- Enjoy the generated story, image, or speech
+
+## Contributing
+If you would like to contribute to the project, follow these steps:
+- Fork the repository
+- Create a new branch with your feature or bug fix
+- Make the necessary changes and commit your changes
+- Submit a pull request describing your changes
+
+## Contact
+If you have any questions or suggestions, feel free to contact the developer:
+
+- Name: Andres Rocha
+- LinkedIn: https://www.linkedin.com/in/andresfeliperocha/
+
