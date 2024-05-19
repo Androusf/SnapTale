@@ -38,12 +38,15 @@ SnapTale is a web application that allows users to generate stories, images, and
     -Create a .env.local file in the root of the project
     -Add the following variables:
 
-    NEXTAUTH_URL=http://localhost:3000
     GITHUB_ID=your-github-client-id
     GITHUB_SECRET=your-github-client-secret
     OPENAI_API_KEY=your-openai-api-key
 
-    Replace your-github-client-id, your-github-client-secret, and your-openai-api-key with your actual values.
+    Replace your
+    
+    - github-client-id 
+    - github-client-secret
+    - openai-api-key 
 
 5. Start the developer server:
 
