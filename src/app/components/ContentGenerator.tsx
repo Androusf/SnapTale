@@ -8,7 +8,7 @@ interface ContentGeneratorProps {
   option: string; // The option prop should be a string that represents the selected output type
 }
 
-// Create a functional component called ContentGenerator
+
 const ContentGenerator: React.FC<ContentGeneratorProps> = ({ option }) => {
   // The component returns different content based on the value of the option prop
   return (
@@ -25,5 +25,5 @@ const ContentGenerator: React.FC<ContentGeneratorProps> = ({ option }) => {
   );
 };
 
-// Export the ContentGenerator component as the default export
+
 export default ContentGenerator
