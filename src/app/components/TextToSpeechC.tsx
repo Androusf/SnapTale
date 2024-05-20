@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-// Create a functional component called GenerateSpeech
 const GenerateSpeech: React.FC = () => {
-  // Define state variables using the useState hook
   const [text, setText] = useState<string>('');
   const [audioContent, setAudioContent] = useState<string>('');
   const [error, setError] = useState<string>('');
@@ -27,7 +25,6 @@ const GenerateSpeech: React.FC = () => {
     }
   };
 
-  // Render the component UI
   return (
     <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden">
       <form onSubmit={handleSubmit} className="p-6">

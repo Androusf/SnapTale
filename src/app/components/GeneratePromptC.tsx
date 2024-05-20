@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-// Create a functional component called GeneratePrompt
 const GeneratePrompt: React.FC = () => {
-  // Define state variables using the useState hook
   const [keyword, setKeyword] = useState<string>('');
   const [prompt, setPrompt] = useState<string>('');
   const [error, setError] = useState<string>('');
@@ -27,7 +25,6 @@ const GeneratePrompt: React.FC = () => {
     }
   };
 
-  // Render the component UI
   return (
     <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden p-4">
       <form onSubmit={handleSubmit} className="mb-4">

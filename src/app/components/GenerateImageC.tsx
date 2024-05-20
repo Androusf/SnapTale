@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-// Create a functional component called GenerateImage
 const GenerateImage: React.FC = () => {
-  // Define state variables using the useState hook
   const [keyword, setKeyword] = useState<string>('');
   const [imageUrl, setImageUrl] = useState<string>('');
   const [error, setError] = useState<string>('');
@@ -27,7 +25,7 @@ const GenerateImage: React.FC = () => {
     }
   };
 
-  // Render the component UI
+
   return (
     <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden">
       <form onSubmit={handleSubmit} className="p-6">
@@ -59,5 +57,4 @@ const GenerateImage: React.FC = () => {
   );
 };
 
-// Export the GenerateImage component as the default export
 export default GenerateImage;
